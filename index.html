@@ -219,7 +219,7 @@
             document.getElementById('position-table').innerHTML = positions.map(p => {
                 const pnl = p.pnl || 0;
                 const pnlRate = p.pnl_rate || 0;
-                return `<tr><td><strong>${p.symbol}</strong></td><td>${p.quantity}</td><td>¥${(p.avg_price || 0).toFixed(2)}</td><td>¥${(p.current_price || 0).toFixed(2)}</td><td>¥${Math.round(p.market_value || 0).toLocaleString()}</td><td class="${pnl >= 0 ? 'up' : 'down'}">${pnl >= 0 ? '+' : ''}¥${Math.round(pnl)}</td><td class="${pnlRate >= 0 ? 'up' : 'down'}">${pnlRate >= 0 ? '+' : ''}${pnlRate.toFixed(2)}%</td></tr>`;
+                return `<tr><td><strong>${p.symbol}</strong></td><td>${p.quantity}</td><td>¥${(p.avg_price || 0).toFixed(2)}</td><td>¥${(p.current_price || 0).toFixed(2)}</td><td>¥${(Math.round(p.market_value) || 0).toLocaleString()}</td><td class="${pnl >= 0 ? 'up' : 'down'}">${pnl >= 0 ? '+' : ''}¥${Math.round(pnl)}</td><td class="${pnlRate >= 0 ? 'up' : 'down'}">${pnlRate >= 0 ? '+' : ''}${pnlRate.toFixed(2)}%</td></tr>`;
             }).join('');
         }
 

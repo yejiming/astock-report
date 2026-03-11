@@ -146,6 +146,7 @@
                 if (this.dataset.page === 'position') loadPosition();
                 if (this.dataset.page === 'history') loadHistory();
                 if (this.dataset.page === 'realtime') loadRealtime();
+                if (this.dataset.page === 'prediction') loadPredictions();
                 if (this.dataset.page === 'report') loadReport();
             });
         });
@@ -195,9 +196,9 @@
             document.getElementById('prediction-title').textContent = `${date} 预测结果 (准确率: ${acc}%)`;
             
             document.getElementById('prediction-table').innerHTML = `
-                <table><thead><tr><th>股票代码</th><th>预测价格</th><th>涨跌幅</th><th>预测</th><th>实际</th><th>结果</th></tr></thead>
+                <table><thead><tr><th>股票代码</th><th>预测时间</th><th>预测价格</th><th>涨跌幅</th><th>预测</th><th>实际</th><th>结果</th></tr></thead>
                 <tbody>${dayData.map(d => `
-                    <tr><td><strong>${d.symbol}</strong></td><td>¥${d.current_price?.toFixed(2) || '-'}</td>
+                    <tr><td><strong>${d.symbol}</strong></td><td>${d.pred_time ? d.pred_time.substring(11,19) : '-'}</td><td>¥${d.current_price?.toFixed(2) || '-'}</td>
                     <td class="${(d.change_pct || 0) > 0 ? 'up' : 'down'}">${(d.change_pct || 0) >= 0 ? '+' : ''}${(d.change_pct || 0).toFixed(2)}%</td>
                     <td><span class="badge badge-${d.predicted === '上涨' ? 'up' : d.predicted === '下跌' ? 'down' : 'hold'}">${d.predicted}</span></td>
                     <td><span class="badge badge-${d.actual === '上涨' ? 'up' : d.actual === '下跌' ? 'down' : 'hold'}">${d.actual}</span></td>

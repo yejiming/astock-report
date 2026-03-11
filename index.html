@@ -252,33 +252,196 @@
     reportContent.innerHTML = `<div style="font-size:14px;line-height:1.8;">
 <h2 style="color:#667eea;margin:20px 0 10px 0;">📈 股票预测模型报告</h2>
 <p style="color:#666;margin-bottom:20px;">生成时间: 2026-03-11 18:37:59</p>
+
 <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">1. 项目背景</h3>
 <h4 style="color:#555;margin:15px 0 8px 0;">1.1 项目目标</h4>
 <p style="color:#555;margin:8px 0;">基于沪深300成分股的历史行情数据，构建机器学习模型预测次日股票涨跌方向。</p>
+
 <h4 style="color:#555;margin:15px 0 8px 0;">1.2 技术方案</h4>
-<ul style="color:#555;margin:8px 0;padding-left:20px;"><li>模型算法: 随机森林 (Random Forest)</li><li>特征选择: 基于特征重要性的过滤式选择</li><li>验证方式: 10折交叉验证</li></ul>
+<ul style="color:#555;margin:8px 0;padding-left:20px;">
+<li><strong>模型算法</strong>: 随机森林 (Random Forest)</li>
+<li><strong>特征选择</strong>: 基于特征重要性的过滤式选择</li>
+<li><strong>验证方式</strong>: 10折交叉验证</li>
+</ul>
+
 <h4 style="color:#555;margin:15px 0 8px 0;">1.3 预测目标</h4>
-<ul style="color:#555;margin:8px 0;padding-left:20px;"><li>上涨: 次日涨幅 > 0.1%</li><li>下跌: 次日涨幅 ≤ 0.1%</li></ul>
+<ul style="color:#555;margin:8px 0;padding-left:20px;">
+<li><strong>上涨</strong>: 次日涨幅 > 0.1%</li>
+<li><strong>下跌</strong>: 次日涨幅 ≤ 0.1%</li>
+</ul>
+
 <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">2. 数据源</h3>
 <h4 style="color:#555;margin:15px 0 8px 0;">2.1 数据来源</h4>
-<ul style="color:#555;margin:8px 0;padding-left:20px;"><li>股票池: 沪深300指数成分股</li><li>数据接口: Akshare Python库</li><li>时间范围: 2025-01-01 至 2026-03-10</li></ul>
+<ul style="color:#555;margin:8px 0;padding-left:20px;">
+<li><strong>股票池</strong>: 沪深300指数成分股</li>
+<li><strong>数据接口</strong>: Akshare Python库</li>
+<li><strong>时间范围</strong>: 2025-01-01 至 2026-03-10</li>
+</ul>
+
 <h4 style="color:#555;margin:15px 0 8px 0;">2.2 数据规模</h4>
-<table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;"><tr style="background:#f5f5f5;"><th style="padding:8px;border:1px solid #ddd;text-align:left;">指标</th><th style="padding:8px;border:1px solid #ddd;text-align:left;">数值</th></tr><tr><td style="padding:8px;border:1px solid #ddd;">股票数量</td><td style="padding:8px;border:1px solid #ddd;">300只</td></tr><tr><td style="padding:8px;border:1px solid #ddd;">总样本数</td><td style="padding:8px;border:1px solid #ddd;">7,769条</td></tr><tr><td style="padding:8px;border:1px solid #ddd;">候选特征数</td><td style="padding:8px;border:1px solid #ddd;">73个</td></tr></table>
+<table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;">
+<tr style="background:#f5f5f5;"><th style="padding:8px;border:1px solid #ddd;text-align:left;">指标</th><th style="padding:8px;border:1px solid #ddd;text-align:left;">数值</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">股票数量</td><td style="padding:8px;border:1px solid #ddd;">300 只</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">总样本数</td><td style="padding:8px;border:1px solid #ddd;">7,769 条</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">候选特征数</td><td style="padding:8px;border:1px solid #ddd;">73 个</td></tr>
+</table>
+
 <h4 style="color:#555;margin:15px 0 8px 0;">2.3 目标变量分布</h4>
-<table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;"><tr style="background:#f5f5f5;"><th style="padding:8px;border:1px solid #ddd;">类别</th><th style="padding:8px;border:1px solid #ddd;">数量</th><th style="padding:8px;border:1px solid #ddd;">占比</th></tr><tr><td style="padding:8px;border:1px solid #ddd;">上涨 (y=1)</td><td style="padding:8px;border:1px solid #ddd;">3,500</td><td style="padding:8px;border:1px solid #ddd;">45.1%</td></tr><tr><td style="padding:8px;border:1px solid #ddd;">下跌 (y=0)</td><td style="padding:8px;border:1px solid #ddd;">4,269</td><td style="padding:8px;border:1px solid #ddd;">54.9%</td></tr></table>
+<table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;">
+<tr style="background:#f5f5f5;"><th style="padding:8px;border:1px solid #ddd;text-align:left;">类别</th><th style="padding:8px;border:1px solid #ddd;text-align:left;">数量</th><th style="padding:8px;border:1px solid #ddd;text-align:left;">占比</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">上涨 (y=1)</td><td style="padding:8px;border:1px solid #ddd;">3,500</td><td style="padding:8px;border:1px solid #ddd;">45.1%</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">下跌 (y=0)</td><td style="padding:8px;border:1px solid #ddd;">4,269</td><td style="padding:8px;border:1px solid #ddd;">54.9%</td></tr>
+</table>
+
 <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">3. 数据分析</h3>
-<p style="color:#555;margin:10px 0;">共构建 <strong>73</strong> 个候选特征</p>
+<h4 style="color:#555;margin:15px 0 8px 0;">3.1 特征体系</h4>
+<p style="color:#555;margin:8px 0;">共构建 <strong>73</strong> 个候选特征，分为以下几类：</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;">
+<tr style="background:#f5f5f5;"><th style="padding:8px;border:1px solid #ddd;text-align:left;">类别</th><th style="padding:8px;border:1px solid #ddd;text-align:left;">数量</th><th style="padding:8px;border:1px solid #ddd;text-align:left;">描述</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">价格变化</td><td style="padding:8px;border:1px solid #ddd;">5</td><td style="padding:8px;border:1px solid #ddd;">1/2/3/5/10日涨跌幅</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">均线偏离</td><td style="padding:8px;border:1px solid #ddd;">5</td><td style="padding:8px;border:1px solid #ddd;">收盘价与MA5/10/20/30/60的偏离率</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">均线交叉</td><td style="padding:8px;border:1px solid #ddd;">2</td><td style="padding:8px;border:1px solid #ddd;">MA5-MA10, MA5-MA20 交叉</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">波动率</td><td style="padding:8px;border:1px solid #ddd;">3</td><td style="padding:8px;border:1px solid #ddd;">10/20日波动率及比值</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">成交量</td><td style="padding:8px;border:1px solid #ddd;">3</td><td style="padding:8px;border:1px solid #ddd;">量比、成交量趋势</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">日内波动</td><td style="padding:8px;border:1px solid #ddd;">4</td><td style="padding:8px;border:1px solid #ddd;">涨跌幅、上影线、下影线</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">RSI</td><td style="padding:8px;border:1px solid #ddd;">3</td><td style="padding:8px;border:1px solid #ddd;">6/12/24日RSI</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">MACD</td><td style="padding:8px;border:1px solid #ddd;">6</td><td style="padding:8px;border:1px solid #ddd;">3组参数的MACD及柱状图</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">布林带</td><td style="padding:8px;border:1px solid #ddd;">8</td><td style="padding:8px;border:1px solid #ddd;">上下轨、带宽、位置</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">威廉指标</td><td style="padding:8px;border:1px solid #ddd;">1</td><td style="padding:8px;border:1px solid #ddd;">WR(14)</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">动量</td><td style="padding:8px;border:1px solid #ddd;">3</td><td style="padding:8px;border:1px solid #ddd;">5/10/20日均线动量</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">价格位置</td><td style="padding:8px;border:1px solid #ddd;">2</td><td style="padding:8px;border:1px solid #ddd;">20日价格位置、动量</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">情绪类</td><td style="padding:8px;border:1px solid #ddd;">24</td><td style="padding:8px;border:1px solid #ddd;">换手率、资金流向、突破信号等</td></tr>
+</table>
+
+<h4 style="color:#555;margin:15px 0 8px 0;">3.2 特征统计摘要</h4>
+<h5 style="color:#666;margin:12px 0 5px 0;">价格变化类特征</h5>
+<table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:12px;">
+<tr style="background:#f5f5f5;"><th style="padding:6px;border:1px solid #ddd;">特征</th><th style="padding:6px;border:1px solid #ddd;">均值</th><th style="padding:6px;border:1px solid #ddd;">标准差</th><th style="padding:6px;border:1px solid #ddd;">最小</th><th style="padding:6px;border:1px solid #ddd;">最大</th></tr>
+<tr><td style="padding:6px;border:1px solid #ddd;">price_change_1d</td><td style="padding:6px;border:1px solid #ddd;">-0.22</td><td style="padding:6px;border:1px solid #ddd;">2.67</td><td style="padding:6px;border:1px solid #ddd;">-24.40</td><td style="padding:6px;border:1px solid #ddd;">20.01</td></tr>
+<tr><td style="padding:6px;border:1px solid #ddd;">price_change_2d</td><td style="padding:6px;border:1px solid #ddd;">-0.31</td><td style="padding:6px;border:1px solid #ddd;">3.57</td><td style="padding:6px;border:1px solid #ddd;">-28.56</td><td style="padding:6px;border:1px solid #ddd;">40.47</td></tr>
+<tr><td style="padding:6px;border:1px solid #ddd;">price_change_3d</td><td style="padding:6px;border:1px solid #ddd;">-0.17</td><td style="padding:6px;border:1px solid #ddd;">4.27</td><td style="padding:6px;border:1px solid #ddd;">-26.77</td><td style="padding:6px;border:1px solid #ddd;">41.62</td></tr>
+<tr><td style="padding:6px;border:1px solid #ddd;">price_change_5d</td><td style="padding:6px;border:1px solid #ddd;">-0.04</td><td style="padding:6px;border:1px solid #ddd;">5.31</td><td style="padding:6px;border:1px solid #ddd;">-68.69</td><td style="padding:6px;border:1px solid #ddd;">61.54</td></tr>
+<tr><td style="padding:6px;border:1px solid #ddd;">price_change_10d</td><td style="padding:6px;border:1px solid #ddd;">0.80</td><td style="padding:6px;border:1px solid #ddd;">7.54</td><td style="padding:6px;border:1px solid #ddd;">-67.85</td><td style="padding:6px;border:1px solid #ddd;">100.43</td></tr>
+</table>
+
+<h5 style="color:#666;margin:12px 0 5px 0;">均线偏离类特征</h5>
+<table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:12px;">
+<tr style="background:#f5f5f5;"><th style="padding:6px;border:1px solid #ddd;">特征</th><th style="padding:6px;border:1px solid #ddd;">均值</th><th style="padding:6px;border:1px solid #ddd;">标准差</th><th style="padding:6px;border:1px solid #ddd;">最小</th><th style="padding:6px;border:1px solid #ddd;">最大</th></tr>
+<tr><td style="padding:6px;border:1px solid #ddd;">ma5_ratio</td><td style="padding:6px;border:1px solid #ddd;">-0.19</td><td style="padding:6px;border:1px solid #ddd;">2.78</td><td style="padding:6px;border:1px solid #ddd;">-31.13</td><td style="padding:6px;border:1px solid #ddd;">26.59</td></tr>
+<tr><td style="padding:6px;border:1px solid #ddd;">ma10_ratio</td><td style="padding:6px;border:1px solid #ddd;">0.00</td><td style="padding:6px;border:1px solid #ddd;">4.08</td><td style="padding:6px;border:1px solid #ddd;">-57.04</td><td style="padding:6px;border:1px solid #ddd;">41.42</td></tr>
+<tr><td style="padding:6px;border:1px solid #ddd;">ma20_ratio</td><td style="padding:6px;border:1px solid #ddd;">0.37</td><td style="padding:6px;border:1px solid #ddd;">5.96</td><td style="padding:6px;border:1px solid #ddd;">-62.95</td><td style="padding:6px;border:1px solid #ddd;">61.22</td></tr>
+<tr><td style="padding:6px;border:1px solid #ddd;">ma30_ratio</td><td style="padding:6px;border:1px solid #ddd;">0.76</td><td style="padding:6px;border:1px solid #ddd;">7.45</td><td style="padding:6px;border:1px solid #ddd;">-65.02</td><td style="padding:6px;border:1px solid #ddd;">82.92</td></tr>
+<tr><td style="padding:6px;border:1px solid #ddd;">ma60_ratio</td><td style="padding:6px;border:1px solid #ddd;">1.59</td><td style="padding:6px;border:1px solid #ddd;">10.45</td><td style="padding:6px;border:1px solid #ddd;">-68.32</td><td style="padding:6px;border:1px solid #ddd;">106.90</td></tr>
+</table>
+
+<h5 style="color:#666;margin:12px 0 5px 0;">情绪类特征 (部分)</h5>
+<table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:12px;">
+<tr style="background:#f5f5f5;"><th style="padding:6px;border:1px solid #ddd;">特征</th><th style="padding:6px;border:1px solid #ddd;">均值</th><th style="padding:6px;border:1px solid #ddd;">标准差</th><th style="padding:6px;border:1px solid #ddd;">零值%</th></tr>
+<tr><td style="padding:6px;border:1px solid #ddd;">turnover_estimate</td><td style="padding:6px;border:1px solid #ddd;">100.40</td><td style="padding:6px;border:1px solid #ddd;">28.26</td><td style="padding:6px;border:1px solid #ddd;">0.0%</td></tr>
+<tr><td style="padding:6px;border:1px solid #ddd;">consecutive_up_days</td><td style="padding:6px;border:1px solid #ddd;">0.77</td><td style="padding:6px;border:1px solid #ddd;">1.15</td><td style="padding:6px;border:1px solid #ddd;">55.5%</td></tr>
+<tr><td style="padding:6px;border:1px solid #ddd;">consecutive_down_days</td><td style="padding:6px;border:1px solid #ddd;">1.04</td><td style="padding:6px;border:1px solid #ddd;">1.35</td><td style="padding:6px;border:1px solid #ddd;">47.1%</td></tr>
+<tr><td style="padding:6px;border:1px solid #ddd;">breakout_signal</td><td style="padding:6px;border:1px solid #ddd;">0.38</td><td style="padding:6px;border:1px solid #ddd;">0.49</td><td style="padding:6px;border:1px solid #ddd;">61.8%</td></tr>
+<tr><td style="padding:6px;border:1px solid #ddd;">gap_up</td><td style="padding:6px;border:1px solid #ddd;">0.19</td><td style="padding:6px;border:1px solid #ddd;">0.64</td><td style="padding:6px;border:1px solid #ddd;">86.9%</td></tr>
+</table>
+
+<h4 style="color:#555;margin:15px 0 8px 0;">3.3 关键发现</h4>
+<ol style="color:#555;margin:8px 0;padding-left:20px;">
+<li><strong>缺失率</strong>: 所有特征缺失率均为0%</li>
+<li><strong>零值占比</strong>: 部分情绪特征零值占比较高（如breakout_signal 61.8%, gap_up 86.9%）</li>
+<li><strong>分布特征</strong>: 价格变化类特征呈尖峰厚尾分布，峰度较高</li>
+</ol>
+
 <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">4. 建模过程</h3>
-<p style="color:#555;margin:10px 0;">特征选择: 基于随机森林特征重要性过滤 | 树数量: 50 | 最大深度: 5 | 最小分裂样本: 10</p>
-<table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;"><tr style="background:#f5f5f5;"><th style="padding:8px;border:1px solid #ddd;">#</th><th style="padding:8px;border:1px solid #ddd;">特征</th><th style="padding:8px;border:1px solid #ddd;">重要性</th></tr><tr><td style="padding:8px;border:1px solid #ddd;">1</td><td style="padding:8px;border:1px solid #ddd;">price_change_1d</td><td style="padding:8px;border:1px solid #ddd;">5.92%</td></tr><tr><td style="padding:8px;border:1px solid #ddd;">2</td><td style="padding:8px;border:1px solid #ddd;">price_change_2d</td><td style="padding:8px;border:1px solid #ddd;">4.76%</td></tr><tr><td style="padding:8px;border:1px solid #ddd;">3</td><td style="padding:8px;border:1px solid #ddd;">price_change_3d</td><td style="padding:8px;border:1px solid #ddd;">4.28%</td></tr><tr><td style="padding:8px;border:1px solid #ddd;">4</td><td style="padding:8px;border:1px solid #ddd;">price_change_5d</td><td style="padding:8px;border:1px solid #ddd;">3.10%</td></tr><tr><td style="padding:8px;border:1px solid #ddd;">5</td><td style="padding:8px;border:1px solid #ddd;">ma60_ratio</td><td style="padding:8px;border:1px solid #ddd;">2.66%</td></tr></table>
+<h4 style="color:#555;margin:15px 0 8px 0;">4.1 特征选择方法</h4>
+<p style="color:#555;margin:8px 0;">采用随机森林的特征重要性进行过滤式特征选择：</p>
+<ol style="color:#555;margin:8px 0;padding-left:20px;">
+<li>使用全部73个候选特征训练随机森林</li>
+<li>计算每个特征的重要性得分</li>
+<li>选择重要性 > 0.01 的特征</li>
+<li>若选中特征少于10个，则取Top 15</li>
+</ol>
+
+<h4 style="color:#555;margin:15px 0 8px 0;">4.2 模型参数</h4>
+<table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;">
+<tr style="background:#f5f5f5;"><th style="padding:8px;border:1px solid #ddd;text-align:left;">参数</th><th style="padding:8px;border:1px solid #ddd;text-align:left;">值</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">树的数量</td><td style="padding:8px;border:1px solid #ddd;">50</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">最大深度</td><td style="padding:8px;border:1px solid #ddd;">5</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">最小分裂样本数</td><td style="padding:8px;border:1px solid #ddd;">10</td></tr>
+</table>
+
+<h4 style="color:#555;margin:15px 0 8px 0;">4.3 最终入模特征</h4>
+<p style="color:#555;margin:8px 0;">共 <strong>10</strong> 个特征被选中：</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;">
+<tr style="background:#f5f5f5;"><th style="padding:8px;border:1px solid #ddd;">排名</th><th style="padding:8px;border:1px solid #ddd;">特征名</th><th style="padding:8px;border:1px solid #ddd;">重要性</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">1</td><td style="padding:8px;border:1px solid #ddd;">price_change_1d</td><td style="padding:8px;border:1px solid #ddd;">592.00%</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">2</td><td style="padding:8px;border:1px solid #ddd;">price_change_2d</td><td style="padding:8px;border:1px solid #ddd;">476.00%</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">3</td><td style="padding:8px;border:1px solid #ddd;">price_change_3d</td><td style="padding:8px;border:1px solid #ddd;">428.00%</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">4</td><td style="padding:8px;border:1px solid #ddd;">price_change_5d</td><td style="padding:8px;border:1px solid #ddd;">310.00%</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">5</td><td style="padding:8px;border:1px solid #ddd;">ma60_ratio</td><td style="padding:8px;border:1px solid #ddd;">266.00%</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">6</td><td style="padding:8px;border:1px solid #ddd;">price_change_10d</td><td style="padding:8px;border:1px solid #ddd;">262.00%</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">7</td><td style="padding:8px;border:1px solid #ddd;">ma5_ratio</td><td style="padding:8px;border:1px solid #ddd;">262.00%</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">8</td><td style="padding:8px;border:1px solid #ddd;">ma10_ratio</td><td style="padding:8px;border:1px solid #ddd;">204.00%</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">9</td><td style="padding:8px;border:1px solid #ddd;">ma20_ratio</td><td style="padding:8px;border:1px solid #ddd;">164.00%</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">10</td><td style="padding:8px;border:1px solid #ddd;">ma30_ratio</td><td style="padding:8px;border:1px solid #ddd;">136.00%</td></tr>
+</table>
+
 <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">5. 模型效果</h3>
-<div style="background:#f0f9ff;padding:15px;border-radius:8px;margin:10px 0;text-align:center;">
-<p style="color:#0678ce;font-size:18px;font-weight:bold;">10折交叉验证准确率: <span style="font-size:24px;">57.9%</span> (±2.0%)</p>
-</div>
-<p style="color:#555;margin:10px 0;">准确率略高于随机基准(50%)，具有预测能力</p>
+<h4 style="color:#555;margin:15px 0 8px 0;">5.1 10折交叉验证结果</h4>
+<table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;">
+<tr style="background:#f5f5f5;"><th style="padding:8px;border:1px solid #ddd;text-align:left;">指标</th><th style="padding:8px;border:1px solid #ddd;text-align:left;">数值</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">平均准确率</td><td style="padding:8px;border:1px solid #ddd;"><strong>57.9%</strong></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd;">标准差</td><td style="padding:8px;border:1px solid #ddd;">±2.0%</td></tr>
+</table>
+
+<h4 style="color:#555;margin:15px 0 8px 0;">5.2 效果分析</h4>
+<ul style="color:#555;margin:8px 0;padding-left:20px;">
+<li>准确率略高于随机基准(50%)，说明模型具有一定的预测能力</li>
+<li>标准差较小，表明模型较为稳定</li>
+<li>入模特征以价格变化和均线偏离类为主，情绪类特征未被选中</li>
+</ul>
+
+<h4 style="color:#555;margin:15px 0 8px 0;">5.3 模型局限性</h4>
+<ol style="color:#555;margin:8px 0;padding-left:20px;">
+<li>预测准确率有限，不宜作为唯一投资依据</li>
+<li>情绪类特征区分度低，未被有效利用</li>
+<li>未考虑基本面、市场情绪等外部因素</li>
+</ol>
+
 <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">6. 使用说明</h3>
-<p style="color:#555;margin:10px 0;">模型文件: results/ml_model_rf.pkl</p>
-<p style="color:#888;margin:10px 0;font-size:12px;">*本报告由AI自动生成</p>
+<h4 style="color:#555;margin:15px 0 8px 0;">6.1 模型调用</h4>
+<pre style="background:#f5f5f5;padding:15px;border-radius:8px;overflow-x:auto;font-size:12px;color:#333;">import pickle
+import akshare as ak
+import numpy as np
+
+# 加载模型
+with open('results/ml_model_rf.pkl', 'rb') as f:
+    model_data = pickle.load(f)
+
+# 获取股票数据
+symbol = '600436'
+df = ak.stock_zh_a_hist(symbol=symbol, period='daily', 
+                        start_date='20250101', end_date='20260310')
+
+# 提取特征 (需实现get_all_features函数)
+features = get_all_features(df)
+
+# 预测
+X = np.array([[features.get(f, 0) for f in model_data['features']]])
+X_scaled = (X - model_data['X_mean']) / model_data['X_std'])
+
+# 输出预测结果
+prediction = model['model'].predict(X_scaled)
+signal = '上涨' if prediction[0] == 1 else '下跌'
+print(f"预测: {signal}")</pre>
+
+<h4 style="color:#555;margin:15px 0 8px 0;">6.2 注意事项</h4>
+<ol style="color:#555;margin:8px 0;padding-left:20px;">
+<li>模型仅供辅助参考，不构成投资建议</li>
+<li>建议结合其他分析方法和市场环境综合判断</li>
+<li>模型基于历史数据，存在过拟合风险</li>
+</ol>
+
+<p style="color:#888;margin:30px 0 10px 0;font-size:12px;">*本报告由AI自动生成*</p>
 </div>`;
 }
 

@@ -69,16 +69,17 @@
         <div class="nav-container">
             <div class="nav-logo">📊 A股交易监控</div>
             <div class="nav-menu">
-                <div class="nav-item active" data-page="prediction">预测模型</div>
-                <div class="nav-item" data-page="position">当前持仓</div>
+                <div class="nav-item active" data-page="position">当前持仓</div>
                 <div class="nav-item" data-page="history">交易历史</div>
                 <div class="nav-item" data-page="realtime">实时股价</div>
+                <div class="nav-item" data-page="prediction">模型结果</div>
+                <div class="nav-item" data-page="report">模型报告</div>
             </div>
         </div>
     </div>
 
     <div class="main-content">
-        <div class="page active" id="page-prediction">
+        <div class="page active" id="page-position">
             <div class="stats-grid">
                 <div class="stat-card"><div class="number" id="total-predictions">-</div><div class="label">总预测次数</div></div>
                 <div class="stat-card"><div class="number" id="correct-predictions">-</div><div class="label">正确次数</div></div>
@@ -120,6 +121,13 @@
                 <table><thead><tr><th>股票代码</th><th>名称</th><th>当前价</th><th>涨跌幅</th><th>预测</th><th>置信度</th></tr></thead><tbody id="realtime-table"><tr><td colspan="6" class="loading">加载中...</td></tr></tbody></table>
             </div>
         </div>
+
+        <div class="page" id="page-report">
+            <div class="card">
+                <div class="card-title">📈 模型报告</div>
+                <div id="report-content" class="loading">加载中...</div>
+            </div>
+        </div>
     </div>
 
     <div class="footer">数据更新于 <span id="last-update"></span></div>
@@ -138,6 +146,7 @@
                 if (this.dataset.page === 'position') loadPosition();
                 if (this.dataset.page === 'history') loadHistory();
                 if (this.dataset.page === 'realtime') loadRealtime();
+                if (this.dataset.page === 'report') loadReport();
             });
         });
 
@@ -237,8 +246,77 @@
             }).join('');
         }
 
+        function loadReport() {
+            const reportContent = document.getElementById('report-content');
+            reportContent.innerHTML = `
+                <div style="font-size:14px;line-height:1.8;">
+                    <h2 style="color:#667eea;margin:20px 0 10px 0;">📈 股票预测模型报告</h2>
+                    <p style="color:#666;margin-bottom:20px;">生成时间: 2026-03-11 18:37:59</p>
+                    
+                    <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">1. 项目背景</h3>
+                    <p style="color:#555;margin:10px 0;"><strong>项目目标:</strong> 基于沪深300成分股的历史行情数据，构建机器学习模型预测次日股票涨跌方向。</p>
+                    <p style="color:#555;margin:10px 0;"><strong>技术方案:</strong> 随机森林 (Random Forest) | 特征选择 | 10折交叉验证</p>
+                    <p style="color:#555;margin:10px 0;"><strong>预测目标:</strong> 上涨: 次日涨幅 > 0.1% | 下跌: 次日涨幅 ≤ 0.1%</p>
+                    
+                    <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">2. 数据源</h3>
+                    <p style="color:#555;margin:10px 0;"><strong>数据来源:</strong> 沪深300指数成分股 | Akshare | 2025-01-01 至 2026-03-10</p>
+                    <p style="color:#555;margin:10px 0;"><strong>数据规模:</strong> 股票数量: 300只 | 总样本数: 7,769条 | 候选特征数: 73个</p>
+                    <p style="color:#555;margin:10px 0;"><strong>目标变量:</strong> 上涨: 3,500 (45.1%) | 下跌: 4,269 (54.9%)</p>
+                    
+                    <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">3. 数据分析</h3>
+                    <p style="color:#555;margin:10px 0;"><strong>特征体系 (73个):</strong></p>
+                    <ul style="color:#555;margin:10px 0;padding-left:20px;">
+                        <li>价格变化: 5个 (1/2/3/5/10日涨跌幅)</li>
+                        <li>均线偏离: 5个 (MA5/10/20/30/60)</li>
+                        <li>技术指标: RSI、MACD、布林带、威廉指标等: 39个</li>
+                        <li>情绪类: 24个 (换手率、资金流向、突破信号等)</li>
+                    </ul>
+                    <p style="color:#555;margin:10px 0;"><strong>关键发现:</strong></p>
+                    <ul style="color:#555;margin:10px 0;padding-left:20px;">
+                        <li>缺失率: 0%</li>
+                        <li>部分情绪特征零值占比较高 (breakout_signal 61.8%, gap_up 86.9%)</li>
+                        <li>价格变化类特征呈尖峰厚尾分布</li>
+                    </ul>
+                    
+                    <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">4. 建模过程</h3>
+                    <p style="color:#555;margin:10px 0;"><strong>特征选择:</strong> 基于随机森林特征重要性过滤</p>
+                    <p style="color:#555;margin:10px 0;"><strong>模型参数:</strong> 树数量: 50 | 最大深度: 5 | 最小分裂样本: 10</p>
+                    <p style="color:#555;margin:10px 0;"><strong>入模特征 (10个):</strong></p>
+                    <table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;">
+                        <tr style="background:#f5f5f5;"><th style="padding:8px;border:1px solid #ddd;">排名</th><th style="padding:8px;border:1px solid #ddd;">特征名</th><th style="padding:8px;border:1px solid #ddd;">重要性</th></tr>
+                        <tr><td style="padding:8px;border:1px solid #ddd;">1</td><td style="padding:8px;border:1px solid #ddd;">price_change_1d</td><td style="padding:8px;border:1px solid #ddd;">5.92%</td></tr>
+                        <tr><td style="padding:8px;border:1px solid #ddd;">2</td><td style="padding:8px;border:1px solid #ddd;">price_change_2d</td><td style="padding:8px;border:1px solid #ddd;">4.76%</td></tr>
+                        <tr><td style="padding:8px;border:1px solid #ddd;">3</td><td style="padding:8px;border:1px solid #ddd;">price_change_3d</td><td style="padding:8px;border:1px solid #ddd;">4.28%</td></tr>
+                        <tr><td style="padding:8px;border:1px solid #ddd;">4</td><td style="padding:8px;border:1px solid #ddd;">price_change_5d</td><td style="padding:8px;border:1px solid #ddd;">3.10%</td></tr>
+                        <tr><td style="padding:8px;border:1px solid #ddd;">5</td><td style="padding:8px;border:1px solid #ddd;">ma60_ratio</td><td style="padding:8px;border:1px solid #ddd;">2.66%</td></tr>
+                        <tr><td style="padding:8px;border:1px solid #ddd;">6</td><td style="padding:8px;border:1px solid #ddd;">price_change_10d</td><td style="padding:8px;border:1px solid #ddd;">2.62%</td></tr>
+                        <tr><td style="padding:8px;border:1px solid #ddd;">7</td><td style="padding:8px;border:1px solid #ddd;">ma5_ratio</td><td style="padding:8px;border:1px solid #ddd;">2.62%</td></tr>
+                        <tr><td style="padding:8px;border:1px solid #ddd;">8</td><td style="padding:8px;border:1px solid #ddd;">ma10_ratio</td><td style="padding:8px;border:1px solid #ddd;">2.04%</td></tr>
+                        <tr><td style="padding:8px;border:1px solid #ddd;">9</td><td style="padding:8px;border:1px solid #ddd;">ma20_ratio</td><td style="padding:8px;border:1px solid #ddd;">1.64%</td></tr>
+                        <tr><td style="padding:8px;border:1px solid #ddd;">10</td><td style="padding:8px;border:1px solid #ddd;">ma30_ratio</td><td style="padding:8px;border:1px solid #ddd;">1.36%</td></tr>
+                    </table>
+                    
+                    <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">5. 模型效果</h3>
+                    <div style="background:#f0f9ff;padding:15px;border-radius:8px;margin:10px 0;">
+                        <p style="color:#0678ce;font-size:18px;font-weight:bold;">10折交叉验证准确率: <span style="font-size:24px;">57.9%</span> (±2.0%)</p>
+                    </div>
+                    <p style="color:#555;margin:10px 0;"><strong>效果分析:</strong></p>
+                    <ul style="color:#555;margin:10px 0;padding-left:20px;">
+                        <li>准确率略高于随机基准(50%)，具有预测能力</li>
+                        <li>标准差较小，模型较为稳定</li>
+                        <li>入模特征以价格变化和均线偏离类为主</li>
+                    </ul>
+                    <p style="color:#888;margin:10px 0;"><strong>局限性:</strong> 准确率有限，不宜作为唯一投资依据</p>
+                    
+                    <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">6. 使用说明</h3>
+                    <p style="color:#555;margin:10px 0;">模型文件: results/ml_model_rf.pkl</p>
+                    <p style="color:#888;margin:10px 0;font-size:12px;">*本报告由AI自动生成</p>
+                </div>
+            `;
+        }
+
         document.getElementById('last-update').textContent = new Date().toLocaleString();
-        loadPredictions();
+        loadPosition();
     </script>
 
 <style>

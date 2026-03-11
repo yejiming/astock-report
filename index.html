@@ -248,75 +248,39 @@
         }
 
         function loadReport() {
-            const reportContent = document.getElementById('report-content');
-            reportContent.innerHTML = `
-                <div style="font-size:14px;line-height:1.8;">
-                    <div style="text-align:center;">
-                        <h2 style="color:#667eea;margin:20px 0 10px 0;">📈 股票预测模型报告</h2>
-                        <p style="color:#666;margin-bottom:20px;">生成时间: 2026-03-11 18:37:59</p>
-                    </div>
-                    
-                    <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">1. 项目背景</h3>
-                    <p style="color:#555;margin:10px 0;"><strong>项目目标:</strong> 基于沪深300成分股的历史行情数据，构建机器学习模型预测次日股票涨跌方向。</p>
-                    <p style="color:#555;margin:10px 0;"><strong>技术方案:</strong> 随机森林 (Random Forest) | 特征选择 | 10折交叉验证</p>
-                    <p style="color:#555;margin:10px 0;"><strong>预测目标:</strong> 上涨: 次日涨幅 > 0.1% | 下跌: 次日涨幅 ≤ 0.1%</p>
-                    
-                    <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">2. 数据源</h3>
-                    <p style="color:#555;margin:10px 0;"><strong>数据来源:</strong> 沪深300指数成分股 | Akshare | 2025-01-01 至 2026-03-10</p>
-                    <p style="color:#555;margin:10px 0;"><strong>数据规模:</strong> 股票数量: 300只 | 总样本数: 7,769条 | 候选特征数: 73个</p>
-                    <p style="color:#555;margin:10px 0;"><strong>目标变量:</strong> 上涨: 3,500 (45.1%) | 下跌: 4,269 (54.9%)</p>
-                    
-                    <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">3. 数据分析</h3>
-                    <p style="color:#555;margin:10px 0;"><strong>特征体系 (73个):</strong></p>
-                    <ul style="color:#555;margin:10px 0;padding-left:20px;">
-                        <li>价格变化: 5个 (1/2/3/5/10日涨跌幅)</li>
-                        <li>均线偏离: 5个 (MA5/10/20/30/60)</li>
-                        <li>技术指标: RSI、MACD、布林带、威廉指标等: 39个</li>
-                        <li>情绪类: 24个 (换手率、资金流向、突破信号等)</li>
-                    </ul>
-                    <p style="color:#555;margin:10px 0;"><strong>关键发现:</strong></p>
-                    <ul style="color:#555;margin:10px 0;padding-left:20px;">
-                        <li>缺失率: 0%</li>
-                        <li>部分情绪特征零值占比较高 (breakout_signal 61.8%, gap_up 86.9%)</li>
-                        <li>价格变化类特征呈尖峰厚尾分布</li>
-                    </ul>
-                    
-                    <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">4. 建模过程</h3>
-                    <p style="color:#555;margin:10px 0;"><strong>特征选择:</strong> 基于随机森林特征重要性过滤</p>
-                    <p style="color:#555;margin:10px 0;"><strong>模型参数:</strong> 树数量: 50 | 最大深度: 5 | 最小分裂样本: 10</p>
-                    <p style="color:#555;margin:10px 0;"><strong>入模特征 (10个):</strong></p>
-                    <table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;">
-                        <tr style="background:#f5f5f5;"><th style="padding:8px;border:1px solid #ddd;">排名</th><th style="padding:8px;border:1px solid #ddd;">特征名</th><th style="padding:8px;border:1px solid #ddd;">重要性</th></tr>
-                        <tr><td style="padding:8px;border:1px solid #ddd;">1</td><td style="padding:8px;border:1px solid #ddd;">price_change_1d</td><td style="padding:8px;border:1px solid #ddd;">5.92%</td></tr>
-                        <tr><td style="padding:8px;border:1px solid #ddd;">2</td><td style="padding:8px;border:1px solid #ddd;">price_change_2d</td><td style="padding:8px;border:1px solid #ddd;">4.76%</td></tr>
-                        <tr><td style="padding:8px;border:1px solid #ddd;">3</td><td style="padding:8px;border:1px solid #ddd;">price_change_3d</td><td style="padding:8px;border:1px solid #ddd;">4.28%</td></tr>
-                        <tr><td style="padding:8px;border:1px solid #ddd;">4</td><td style="padding:8px;border:1px solid #ddd;">price_change_5d</td><td style="padding:8px;border:1px solid #ddd;">3.10%</td></tr>
-                        <tr><td style="padding:8px;border:1px solid #ddd;">5</td><td style="padding:8px;border:1px solid #ddd;">ma60_ratio</td><td style="padding:8px;border:1px solid #ddd;">2.66%</td></tr>
-                        <tr><td style="padding:8px;border:1px solid #ddd;">6</td><td style="padding:8px;border:1px solid #ddd;">price_change_10d</td><td style="padding:8px;border:1px solid #ddd;">2.62%</td></tr>
-                        <tr><td style="padding:8px;border:1px solid #ddd;">7</td><td style="padding:8px;border:1px solid #ddd;">ma5_ratio</td><td style="padding:8px;border:1px solid #ddd;">2.62%</td></tr>
-                        <tr><td style="padding:8px;border:1px solid #ddd;">8</td><td style="padding:8px;border:1px solid #ddd;">ma10_ratio</td><td style="padding:8px;border:1px solid #ddd;">2.04%</td></tr>
-                        <tr><td style="padding:8px;border:1px solid #ddd;">9</td><td style="padding:8px;border:1px solid #ddd;">ma20_ratio</td><td style="padding:8px;border:1px solid #ddd;">1.64%</td></tr>
-                        <tr><td style="padding:8px;border:1px solid #ddd;">10</td><td style="padding:8px;border:1px solid #ddd;">ma30_ratio</td><td style="padding:8px;border:1px solid #ddd;">1.36%</td></tr>
-                    </table>
-                    
-                    <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">5. 模型效果</h3>
-                    <div style="background:#f0f9ff;padding:15px;border-radius:8px;margin:10px 0;text-align:center;">
-                        <p style="color:#0678ce;font-size:18px;font-weight:bold;">10折交叉验证准确率: <span style="font-size:24px;">57.9%</span> (±2.0%)</p>
-                    </div>
-                    <p style="color:#555;margin:10px 0;"><strong>效果分析:</strong></p>
-                    <ul style="color:#555;margin:10px 0;padding-left:20px;">
-                        <li>准确率略高于随机基准(50%)，具有预测能力</li>
-                        <li>标准差较小，模型较为稳定</li>
-                        <li>入模特征以价格变化和均线偏离类为主</li>
-                    </ul>
-                    <p style="color:#888;margin:10px 0;"><strong>局限性:</strong> 准确率有限，不宜作为唯一投资依据</p>
-                    
-                    <h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">6. 使用说明</h3>
-                    <p style="color:#555;margin:10px 0;">模型文件: results/ml_model_rf.pkl</p>
-                    <p style="color:#888;margin:10px 0;font-size:12px;">*本报告由AI自动生成</p>
-                </div>
-            `;
-        }
+    const reportContent = document.getElementById('report-content');
+    reportContent.innerHTML = `<div style="font-size:14px;line-height:1.8;">
+<h2 style="color:#667eea;margin:20px 0 10px 0;">📈 股票预测模型报告</h2>
+<p style="color:#666;margin-bottom:20px;">生成时间: 2026-03-11 18:37:59</p>
+<h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">1. 项目背景</h3>
+<h4 style="color:#555;margin:15px 0 8px 0;">1.1 项目目标</h4>
+<p style="color:#555;margin:8px 0;">基于沪深300成分股的历史行情数据，构建机器学习模型预测次日股票涨跌方向。</p>
+<h4 style="color:#555;margin:15px 0 8px 0;">1.2 技术方案</h4>
+<ul style="color:#555;margin:8px 0;padding-left:20px;"><li>模型算法: 随机森林 (Random Forest)</li><li>特征选择: 基于特征重要性的过滤式选择</li><li>验证方式: 10折交叉验证</li></ul>
+<h4 style="color:#555;margin:15px 0 8px 0;">1.3 预测目标</h4>
+<ul style="color:#555;margin:8px 0;padding-left:20px;"><li>上涨: 次日涨幅 > 0.1%</li><li>下跌: 次日涨幅 ≤ 0.1%</li></ul>
+<h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">2. 数据源</h3>
+<h4 style="color:#555;margin:15px 0 8px 0;">2.1 数据来源</h4>
+<ul style="color:#555;margin:8px 0;padding-left:20px;"><li>股票池: 沪深300指数成分股</li><li>数据接口: Akshare Python库</li><li>时间范围: 2025-01-01 至 2026-03-10</li></ul>
+<h4 style="color:#555;margin:15px 0 8px 0;">2.2 数据规模</h4>
+<table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;"><tr style="background:#f5f5f5;"><th style="padding:8px;border:1px solid #ddd;text-align:left;">指标</th><th style="padding:8px;border:1px solid #ddd;text-align:left;">数值</th></tr><tr><td style="padding:8px;border:1px solid #ddd;">股票数量</td><td style="padding:8px;border:1px solid #ddd;">300只</td></tr><tr><td style="padding:8px;border:1px solid #ddd;">总样本数</td><td style="padding:8px;border:1px solid #ddd;">7,769条</td></tr><tr><td style="padding:8px;border:1px solid #ddd;">候选特征数</td><td style="padding:8px;border:1px solid #ddd;">73个</td></tr></table>
+<h4 style="color:#555;margin:15px 0 8px 0;">2.3 目标变量分布</h4>
+<table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;"><tr style="background:#f5f5f5;"><th style="padding:8px;border:1px solid #ddd;">类别</th><th style="padding:8px;border:1px solid #ddd;">数量</th><th style="padding:8px;border:1px solid #ddd;">占比</th></tr><tr><td style="padding:8px;border:1px solid #ddd;">上涨 (y=1)</td><td style="padding:8px;border:1px solid #ddd;">3,500</td><td style="padding:8px;border:1px solid #ddd;">45.1%</td></tr><tr><td style="padding:8px;border:1px solid #ddd;">下跌 (y=0)</td><td style="padding:8px;border:1px solid #ddd;">4,269</td><td style="padding:8px;border:1px solid #ddd;">54.9%</td></tr></table>
+<h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">3. 数据分析</h3>
+<p style="color:#555;margin:10px 0;">共构建 <strong>73</strong> 个候选特征</p>
+<h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">4. 建模过程</h3>
+<p style="color:#555;margin:10px 0;">特征选择: 基于随机森林特征重要性过滤 | 树数量: 50 | 最大深度: 5 | 最小分裂样本: 10</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;"><tr style="background:#f5f5f5;"><th style="padding:8px;border:1px solid #ddd;">#</th><th style="padding:8px;border:1px solid #ddd;">特征</th><th style="padding:8px;border:1px solid #ddd;">重要性</th></tr><tr><td style="padding:8px;border:1px solid #ddd;">1</td><td style="padding:8px;border:1px solid #ddd;">price_change_1d</td><td style="padding:8px;border:1px solid #ddd;">5.92%</td></tr><tr><td style="padding:8px;border:1px solid #ddd;">2</td><td style="padding:8px;border:1px solid #ddd;">price_change_2d</td><td style="padding:8px;border:1px solid #ddd;">4.76%</td></tr><tr><td style="padding:8px;border:1px solid #ddd;">3</td><td style="padding:8px;border:1px solid #ddd;">price_change_3d</td><td style="padding:8px;border:1px solid #ddd;">4.28%</td></tr><tr><td style="padding:8px;border:1px solid #ddd;">4</td><td style="padding:8px;border:1px solid #ddd;">price_change_5d</td><td style="padding:8px;border:1px solid #ddd;">3.10%</td></tr><tr><td style="padding:8px;border:1px solid #ddd;">5</td><td style="padding:8px;border:1px solid #ddd;">ma60_ratio</td><td style="padding:8px;border:1px solid #ddd;">2.66%</td></tr></table>
+<h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">5. 模型效果</h3>
+<div style="background:#f0f9ff;padding:15px;border-radius:8px;margin:10px 0;text-align:center;">
+<p style="color:#0678ce;font-size:18px;font-weight:bold;">10折交叉验证准确率: <span style="font-size:24px;">57.9%</span> (±2.0%)</p>
+</div>
+<p style="color:#555;margin:10px 0;">准确率略高于随机基准(50%)，具有预测能力</p>
+<h3 style="color:#333;margin:20px 0 10px 0;border-bottom:1px solid #eee;padding-bottom:5px;">6. 使用说明</h3>
+<p style="color:#555;margin:10px 0;">模型文件: results/ml_model_rf.pkl</p>
+<p style="color:#888;margin:10px 0;font-size:12px;">*本报告由AI自动生成</p>
+</div>`;
+}
 
         document.getElementById('last-update').textContent = new Date().toLocaleString();
         loadPosition();

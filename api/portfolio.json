@@ -1,5 +1,5 @@
 {
-  "cash": 560127.2539999998,
+  "cash": 604629.2539999998,
   "positions": {
     "000338": {
       "symbol": "000338",
@@ -8,45 +8,45 @@
       "cost": 10369.594,
       "buy_date": "2026-03-11",
       "available_quantity": 0,
-      "market_value": 7566.0,
-      "current_price": 25.22,
-      "pnl": -209.25000000000045,
-      "pnl_rate": -2.691231793189935
+      "market_value": 7545.0,
+      "current_price": 25.15,
+      "pnl": -230.25000000000057,
+      "pnl_rate": -2.9613195717179583
     },
     "300750": {
       "symbol": "300750",
-      "quantity": 700,
+      "quantity": 600,
       "avg_price": 394.4790909090909,
       "cost": 433966.401,
       "buy_date": "2026-03-11",
       "available_quantity": 100,
-      "market_value": 276577.0,
-      "current_price": 395.11,
-      "pnl": 441.6363636363599,
-      "pnl_rate": 0.1599347355661192
+      "market_value": 237048.0,
+      "current_price": 395.08,
+      "pnl": 360.5454545454336,
+      "pnl_rate": 0.15232976975388984
     },
     "002475": {
       "symbol": "002475",
-      "quantity": 3100,
+      "quantity": 3000,
       "avg_price": 50.05657142857143,
       "cost": 175203.011,
       "buy_date": "2026-03-11",
       "available_quantity": 100,
-      "market_value": 153977.0,
-      "current_price": 49.67,
-      "pnl": -1198.37142857143,
-      "pnl_rate": -0.7722690898297935
+      "market_value": 148770.0,
+      "current_price": 49.59,
+      "pnl": -1399.714285714282,
+      "pnl_rate": -0.9320882658477811
     }
   },
   "initial_capital": 1000000,
   "created_at": "2026-03-11T12:59:12.452652",
-  "market_value": 438120.0,
-  "total_assets": 998247.2539999998,
-  "total_pnl": -965.9850649350706,
+  "market_value": 393363.0,
+  "total_assets": 997992.2539999998,
+  "total_pnl": -1269.418831168849,
   "realtime_prices": {
-    "000338": 25.22,
-    "300750": 395.11,
-    "002475": 49.67
+    "000338": 25.15,
+    "300750": 395.08,
+    "002475": 49.59
   },
-  "updated_at": "2026-03-12T14:10:18.883591"
+  "updated_at": "2026-03-12T14:31:36.934564"
 }

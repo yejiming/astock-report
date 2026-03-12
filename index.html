@@ -239,9 +239,10 @@
             
             const names = {'600436':'片仔癀','000858':'五粮液','300750':'宁德时代','002415':'海康威视','000538':'云南白药','600031':'三一重工','000568':'泸州老窖','600111':'北方稀土','002475':'立讯精密','000338':'潍柴动力'};
             const symbols = Object.keys(predData.data || {});
+            const latestDate = predData.dates?.at(-1) || predData.dates?.[0];
             
             document.getElementById('realtime-table').innerHTML = symbols.map(sym => {
-                const d = (predData.data[sym] || {})[predData.dates?.[0]] || {};
+                const d = (predData.data[sym] || {})[latestDate] || {};
                 const price = predData.realtime_prices?.[sym] || d.price || 0;
                 return `<tr><td><strong>${sym}</strong></td><td>${names[sym] || '-'}</td><td>¥${price.toFixed(2)}</td><td class="${(d.prediction === '上涨' ? 'up' : d.prediction === '下跌' ? 'down' : '')}">${d.prediction || '-'}</td><td><span class="badge badge-${d.prediction === '上涨' ? 'up' : d.prediction === '下跌' ? 'down' : 'hold'}">${d.prediction || '-'}</span></td><td>${d.confidence || 0}%</td></tr>`;
             }).join('');

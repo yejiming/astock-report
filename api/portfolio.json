@@ -8,10 +8,10 @@
       "cost": 10369.594,
       "buy_date": "2026-03-11",
       "available_quantity": 0,
-      "market_value": 7521.0,
-      "current_price": 25.07,
-      "pnl": -254.25000000000006,
-      "pnl_rate": -3.269991318607119
+      "market_value": 7542.0,
+      "current_price": 25.14,
+      "pnl": -233.24999999999994,
+      "pnl_rate": -2.9999035400790968
     },
     "002475": {
       "symbol": "002475",
@@ -20,20 +20,20 @@
       "cost": 175203.011,
       "buy_date": "2026-03-11",
       "available_quantity": 100,
-      "market_value": 74550.0,
-      "current_price": 49.7,
-      "pnl": -534.8571428571418,
-      "pnl_rate": -0.7123368988230445
+      "market_value": 74775.0,
+      "current_price": 49.85,
+      "pnl": -309.8571428571439,
+      "pnl_rate": -0.4126759437893141
     }
   },
   "initial_capital": 1000000,
   "created_at": "2026-03-11T12:59:12.452652",
-  "market_value": 82071.0,
-  "total_assets": 1000086.2539999998,
-  "total_pnl": -789.1071428571418,
+  "market_value": 82317.0,
+  "total_assets": 1000332.2539999998,
+  "total_pnl": -543.1071428571438,
   "realtime_prices": {
-    "000338": 25.07,
-    "002475": 49.7
+    "000338": 25.14,
+    "002475": 49.85
   },
-  "updated_at": "2026-03-13T13:30:12.216356"
+  "updated_at": "2026-03-13T13:40:18.354451"
 }

@@ -1,7 +1,8 @@
 {
   "dates": [
     "2026-03-11",
-    "2026-03-12"
+    "2026-03-12",
+    "2026-03-13"
   ],
   "data": {
     "600436": {
@@ -18,6 +19,13 @@
         "confidence": 57.0,
         "signal": "sell",
         "timestamp": "2026-03-12T15:28:56.741369"
+      },
+      "2026-03-13": {
+        "price": 156.4,
+        "prediction": "下跌",
+        "confidence": 57.0,
+        "signal": "sell",
+        "timestamp": "2026-03-13T09:11:11.812424"
       }
     },
     "000858": {
@@ -34,6 +42,13 @@
         "confidence": 62.0,
         "signal": "sell",
         "timestamp": "2026-03-12T15:28:56.741369"
+      },
+      "2026-03-13": {
+        "price": 102.27,
+        "prediction": "下跌",
+        "confidence": 62.0,
+        "signal": "sell",
+        "timestamp": "2026-03-13T09:11:11.812424"
       }
     },
     "300750": {
@@ -50,6 +65,13 @@
         "confidence": 59.0,
         "signal": "sell",
         "timestamp": "2026-03-12T15:28:56.741369"
+      },
+      "2026-03-13": {
+        "price": 395.5,
+        "prediction": "下跌",
+        "confidence": 59.5,
+        "signal": "sell",
+        "timestamp": "2026-03-13T09:11:11.812424"
       }
     },
     "002415": {
@@ -66,6 +88,13 @@
         "confidence": 61.0,
         "signal": "sell",
         "timestamp": "2026-03-12T15:28:56.741369"
+      },
+      "2026-03-13": {
+        "price": 31.92,
+        "prediction": "下跌",
+        "confidence": 61.0,
+        "signal": "sell",
+        "timestamp": "2026-03-13T09:11:11.812424"
       }
     },
     "000538": {
@@ -82,6 +111,13 @@
         "confidence": 59.0,
         "signal": "sell",
         "timestamp": "2026-03-12T15:28:56.741369"
+      },
+      "2026-03-13": {
+        "price": 56.3,
+        "prediction": "下跌",
+        "confidence": 59.0,
+        "signal": "sell",
+        "timestamp": "2026-03-13T09:11:11.812424"
       }
     },
     "600031": {
@@ -98,6 +134,13 @@
         "confidence": 54.0,
         "signal": "sell",
         "timestamp": "2026-03-12T15:28:56.741369"
+      },
+      "2026-03-13": {
+        "price": 21.51,
+        "prediction": "下跌",
+        "confidence": 54.0,
+        "signal": "sell",
+        "timestamp": "2026-03-13T09:11:11.812424"
       }
     },
     "000568": {
@@ -114,6 +157,13 @@
         "confidence": 59.5,
         "signal": "sell",
         "timestamp": "2026-03-12T15:28:56.741369"
+      },
+      "2026-03-13": {
+        "price": 105.18,
+        "prediction": "下跌",
+        "confidence": 59.5,
+        "signal": "sell",
+        "timestamp": "2026-03-13T09:11:11.812424"
       }
     },
     "600111": {
@@ -130,6 +180,13 @@
         "confidence": 57.5,
         "signal": "sell",
         "timestamp": "2026-03-12T15:28:56.741369"
+      },
+      "2026-03-13": {
+        "price": 51.69,
+        "prediction": "下跌",
+        "confidence": 57.5,
+        "signal": "sell",
+        "timestamp": "2026-03-13T09:11:11.812424"
       }
     },
     "002475": {
@@ -146,6 +203,13 @@
         "confidence": 60.0,
         "signal": "sell",
         "timestamp": "2026-03-12T15:28:56.741369"
+      },
+      "2026-03-13": {
+        "price": 49.7,
+        "prediction": "下跌",
+        "confidence": 60.0,
+        "signal": "sell",
+        "timestamp": "2026-03-13T09:11:11.812424"
       }
     },
     "000338": {
@@ -162,6 +226,13 @@
         "confidence": 50.5,
         "signal": "buy",
         "timestamp": "2026-03-12T15:28:56.741369"
+      },
+      "2026-03-13": {
+        "price": 25.2,
+        "prediction": "上涨",
+        "confidence": 50.5,
+        "signal": "buy",
+        "timestamp": "2026-03-13T09:11:11.812424"
       }
     }
   },
@@ -177,5 +248,5 @@
     "002475": 49.7,
     "000338": 25.2
   },
-  "updated_at": "2026-03-12T15:37:32.056758"
+  "updated_at": "2026-03-13T09:13:19.893441"
 }

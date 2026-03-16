@@ -4267,10 +4267,21 @@
       "actual": "震荡",
       "correct": false,
       "date": "2026-03-16"
+    },
+    {
+      "symbol": "000538",
+      "pred_time": "2026-03-16T11:07:53.564466",
+      "current_price": 56.74,
+      "new_price": 56.71,
+      "change_pct": -0.05,
+      "predicted": "下跌",
+      "actual": "震荡",
+      "correct": false,
+      "date": "2026-03-16"
     }
   ],
-  "total": 388,
+  "total": 389,
   "correct": 45,
   "accuracy": 11.6,
-  "updated_at": "2026-03-16T13:50:51.052647"
+  "updated_at": "2026-03-16T14:03:39.268706"
 }

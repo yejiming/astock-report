@@ -4179,10 +4179,87 @@
       "actual": "震荡",
       "correct": false,
       "date": "2026-03-13"
+    },
+    {
+      "symbol": "002415",
+      "pred_time": "2026-03-16T09:20:16.180040",
+      "current_price": 31.94,
+      "new_price": 31.8,
+      "change_pct": -0.44,
+      "predicted": "下跌",
+      "actual": "震荡",
+      "correct": false,
+      "date": "2026-03-16"
+    },
+    {
+      "symbol": "000568",
+      "pred_time": "2026-03-16T09:20:16.180040",
+      "current_price": 107.86,
+      "new_price": 108.8,
+      "change_pct": 0.87,
+      "predicted": "下跌",
+      "actual": "震荡",
+      "correct": false,
+      "date": "2026-03-16"
+    },
+    {
+      "symbol": "600111",
+      "pred_time": "2026-03-16T09:30:36.459995",
+      "current_price": 50.98,
+      "new_price": 48.94,
+      "change_pct": -4.0,
+      "predicted": "下跌",
+      "actual": "下跌",
+      "correct": true,
+      "date": "2026-03-16"
+    },
+    {
+      "symbol": "300750",
+      "pred_time": "2026-03-16T09:40:25.025658",
+      "current_price": 398.83,
+      "new_price": 406.51,
+      "change_pct": 1.93,
+      "predicted": "下跌",
+      "actual": "上涨",
+      "correct": false,
+      "date": "2026-03-16"
+    },
+    {
+      "symbol": "000858",
+      "pred_time": "2026-03-16T09:40:25.025658",
+      "current_price": 103.67,
+      "new_price": 104.34,
+      "change_pct": 0.65,
+      "predicted": "下跌",
+      "actual": "震荡",
+      "correct": false,
+      "date": "2026-03-16"
+    },
+    {
+      "symbol": "300750",
+      "pred_time": "2026-03-16T09:50:35.981158",
+      "current_price": 403.56,
+      "new_price": 406.51,
+      "change_pct": 0.73,
+      "predicted": "下跌",
+      "actual": "震荡",
+      "correct": false,
+      "date": "2026-03-16"
+    },
+    {
+      "symbol": "600436",
+      "pred_time": "2026-03-16T09:50:35.981158",
+      "current_price": 159.53,
+      "new_price": 160.9,
+      "change_pct": 0.86,
+      "predicted": "下跌",
+      "actual": "震荡",
+      "correct": false,
+      "date": "2026-03-16"
     }
   ],
-  "total": 380,
-  "correct": 44,
+  "total": 387,
+  "correct": 45,
   "accuracy": 11.6,
-  "updated_at": "2026-03-16T10:50:21.559073"
+  "updated_at": "2026-03-16T11:10:16.673939"
 }

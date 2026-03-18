@@ -8,30 +8,30 @@
       "cost": 10369.594,
       "buy_date": "2026-03-11",
       "available_quantity": 0,
-      "market_value": 5020.0,
-      "current_price": 25.1,
-      "pnl": -163.4999999999998,
-      "pnl_rate": -3.1542394135236766
+      "market_value": 5034.0,
+      "current_price": 25.17,
+      "pnl": -149.49999999999974,
+      "pnl_rate": -2.8841516349956544
     },
     "600111": {
       "symbol": "600111",
       "name": "北方稀土",
       "quantity": 700,
       "avg_price": 49.01,
-      "current_price": 48.4,
-      "market_value": 33880.0,
-      "pnl": -426.9999999999996,
-      "pnl_rate": -1.244643950214241
+      "current_price": 48.62,
+      "market_value": 34034.0,
+      "pnl": -273.0000000000004,
+      "pnl_rate": -0.7957559681697625
     }
   },
   "initial_capital": 1000000,
   "created_at": "2026-03-11T12:59:12.452652",
-  "market_value": 38900.0,
-  "total_assets": 1000635.2539999998,
-  "total_pnl": -590.4999999999994,
+  "market_value": 39068.0,
+  "total_assets": 1000803.2539999998,
+  "total_pnl": -422.5000000000001,
   "realtime_prices": {
-    "000338": 25.1,
-    "600111": 48.4
+    "000338": 25.17,
+    "600111": 48.62
   },
-  "updated_at": "2026-03-18T13:50:43.676545"
+  "updated_at": "2026-03-18T14:03:43.090796"
 }

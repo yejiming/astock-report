@@ -4806,10 +4806,54 @@
       "actual": "震荡",
       "correct": false,
       "date": "2026-03-18"
+    },
+    {
+      "symbol": "300750",
+      "pred_time": "2026-03-18T11:05:48.137892",
+      "current_price": 399.5,
+      "new_price": 400.52,
+      "change_pct": 0.26,
+      "predicted": "下跌",
+      "actual": "震荡",
+      "correct": false,
+      "date": "2026-03-18"
+    },
+    {
+      "symbol": "600436",
+      "pred_time": "2026-03-18T11:05:48.137892",
+      "current_price": 158.51,
+      "new_price": 158.12,
+      "change_pct": -0.25,
+      "predicted": "下跌",
+      "actual": "震荡",
+      "correct": false,
+      "date": "2026-03-18"
+    },
+    {
+      "symbol": "002475",
+      "pred_time": "2026-03-18T11:05:48.137892",
+      "current_price": 49.25,
+      "new_price": 48.99,
+      "change_pct": -0.53,
+      "predicted": "下跌",
+      "actual": "震荡",
+      "correct": false,
+      "date": "2026-03-18"
+    },
+    {
+      "symbol": "000538",
+      "pred_time": "2026-03-18T13:00:14.643209",
+      "current_price": 56.59,
+      "new_price": 56.69,
+      "change_pct": 0.18,
+      "predicted": "下跌",
+      "actual": "震荡",
+      "correct": false,
+      "date": "2026-03-18"
     }
   ],
-  "total": 437,
+  "total": 441,
   "correct": 49,
-  "accuracy": 11.2,
-  "updated_at": "2026-03-18T13:50:43.363626"
+  "accuracy": 11.1,
+  "updated_at": "2026-03-18T14:03:42.791345"
 }
